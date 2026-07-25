@@ -35,6 +35,11 @@ type Img2DcmRequest struct {
 	LengthUndefined  bool     `json:"length_undefined,omitempty"`  // --length-undefined
 	PaddingOff       bool     `json:"padding_off,omitempty"`       // --padding-off
 	EncounterID      string   `json:"encounter_id,omitempty"`      // --key 0038,0010
+	StudyDate        string   `json:"study_date,omitempty"`        // --key StudyDate
+	StudyTime        string   `json:"study_time,omitempty"`        // --key StudyTime
+	StudyInstanceUID  string   `json:"study_instance_uid,omitempty"`  // --key StudyInstanceUID
+	SeriesInstanceUID string   `json:"series_instance_uid,omitempty"` // --key SeriesInstanceUID
+	GenerateUIDs     *bool    `json:"generate_uids,omitempty"`      // for parity with pdf2dcm
 }
 
 func (req *Img2DcmRequest) ToArgs() []string {
@@ -89,6 +94,18 @@ func (req *Img2DcmRequest) ToArgs() []string {
 	}
 	if req.EncounterID != "" {
 		args = append(args, "--key", "0038,0010="+req.EncounterID)
+	}
+	if req.StudyDate != "" {
+		args = append(args, "--key", "StudyDate="+req.StudyDate)
+	}
+	if req.StudyTime != "" {
+		args = append(args, "--key", "StudyTime="+req.StudyTime)
+	}
+	if req.StudyInstanceUID != "" {
+		args = append(args, "--key", "StudyInstanceUID="+req.StudyInstanceUID)
+	}
+	if req.SeriesInstanceUID != "" {
+		args = append(args, "--key", "SeriesInstanceUID="+req.SeriesInstanceUID)
 	}
 	
 	switch req.OutputSopClass {

@@ -34,20 +34,25 @@ Anda bisa menggunakan Postman atau langsung mengimpor bundel [openapi.yaml](open
 
 ### 📝 Contoh Payload \`parameters\` (Basic Metadata)
 
+> [!NOTE]
+> Parameter `study_instance_uid` dan `series_instance_uid` bersifat opsional. Jika parameter ini dikosongkan (atau `"generate_uids": true` dikirimkan), maka UID baru untuk Study dan Series akan di-generate secara otomatis.
+
 **Konversi Gambar (\`/img2dcm\`)**
 Sertakan File JPEG/BMP pada form \`file\`, dan berikan text di form \`parameters\` sbb:
 ```json
 {
   "output_sop_class": "vl-photo",
   "encounter_id": "12345-abcde-67890",
+  "study_date": "20240420",
+  "study_time": "120000",
+  "study_instance_uid": "1.2.3.4.5.6.7",
+  "series_instance_uid": "1.2.3.4.5.6.7.1",
+  "generate_uids": true,
   "keys": [
     "PatientName=Doe^John",
     "PatientID=123456789",
     "PatientBirthDate=19900101",
     "PatientSex=M",
-    "StudyInstanceUID=1.2.3.4.5.6.7",
-    "SeriesInstanceUID=1.2.3.4.5.6.7.1",
-    "StudyDate=20240420",
     "AccessionNumber=ACC001",
     "Modality=DOC"
   ]
@@ -67,10 +72,13 @@ Sertakan Dokumen PDF pada form \`file\`, dan berikan text di form \`parameters\`
   "manufacturer": "NAMA_RS/KLINIK",
   "manufacturer_model": "Sistem Informasi Rekam Medis",
   "encounter_id": "12345-abcde-67890",
+  "study_date": "20240420",
+  "study_time": "120000",
+  "study_instance_uid": "1.2.3.4.5.6.7",
+  "series_instance_uid": "1.2.3.4.5.6.7.1",
   "generate_uids": true,
   "keys": [
     "AccessionNumber=ACC002",
-    "StudyDate=20240420",
     "Modality=DOC"
   ]
 }

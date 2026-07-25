@@ -31,6 +31,11 @@ paths:
                       "output_sop_class": "vl-photo",
                       "patient_name": "Test^Patient",
                       "encounter_id": "12345-abcde-67890",
+                      "study_date": "20240420",
+                      "study_time": "120000",
+                      "study_instance_uid": "1.2.3.4.5.6.7",
+                      "series_instance_uid": "1.2.3.4.5.6.7.1",
+                      "generate_uids": true,
                       "keys": [
                         "PatientName=Test^Patient",
                         "Modality=DOC"
@@ -74,6 +79,10 @@ paths:
                       "patient_name": "Doe^John",
                       "patient_id": "89392",
                       "encounter_id": "12345-abcde-67890",
+                      "study_date": "20240420",
+                      "study_time": "120000",
+                      "study_instance_uid": "1.2.3.4.5.6.7",
+                      "series_instance_uid": "1.2.3.4.5.6.7.1",
                       "generate_uids": true,
                       "keys": [
                         "Modality=DOC"

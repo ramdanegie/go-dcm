@@ -36,6 +36,10 @@ type Pdf2DcmRequest struct {
 	Override         bool     `json:"override,omitempty"`           // --override
 	Keys             []string `json:"keys,omitempty"`               // --key
 	EncounterID      string   `json:"encounter_id,omitempty"`      // --key 0038,0010
+	StudyDate        string   `json:"study_date,omitempty"`        // --key StudyDate
+	StudyTime        string   `json:"study_time,omitempty"`        // --key StudyTime
+	StudyInstanceUID  string   `json:"study_instance_uid,omitempty"`  // --key StudyInstanceUID
+	SeriesInstanceUID string   `json:"series_instance_uid,omitempty"` // --key SeriesInstanceUID
 }
 
 func (req *Pdf2DcmRequest) ToArgs() []string {
@@ -107,6 +111,18 @@ func (req *Pdf2DcmRequest) ToArgs() []string {
 	}
 	if req.EncounterID != "" {
 		args = append(args, "--key", "0038,0010="+req.EncounterID)
+	}
+	if req.StudyDate != "" {
+		args = append(args, "--key", "StudyDate="+req.StudyDate)
+	}
+	if req.StudyTime != "" {
+		args = append(args, "--key", "StudyTime="+req.StudyTime)
+	}
+	if req.StudyInstanceUID != "" {
+		args = append(args, "--key", "StudyInstanceUID="+req.StudyInstanceUID)
+	}
+	if req.SeriesInstanceUID != "" {
+		args = append(args, "--key", "SeriesInstanceUID="+req.SeriesInstanceUID)
 	}
 
 	return args
